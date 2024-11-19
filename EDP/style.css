@@ -1,0 +1,112 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+  }
+  header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 24px;
+    box-shadow: 0 4px 2px -2px gray;
+  }
+  
+  /* Navigation Bar */
+  nav {
+    display: flex;
+    justify-content: center;
+    background-color: #444;
+    padding: 10px;
+  }
+  nav a {
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  nav a:hover {
+    background-color: #555;
+  }
+  
+  /* Homepage Message */
+  .message {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #48C9B0;
+    color: white;
+    font-size: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  /* Map Styles */
+  #map {
+    height: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  /* Floor Buttons */
+  .floor-buttons {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .floor-buttons button {
+    background-color: #48C9B0;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  .floor-buttons button:hover {
+    background-color: #16a085;
+  }
+  
+  /* Room Details */
+  .room-details {
+    display: none;
+    padding: 20px;
+    background-color: #ffffff;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  .room-details img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+  }
+  
+  /* Footer Styles */
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+  }
+  footer a {
+    color: #48C9B0;
+    text-decoration: none;
+    padding: 10px;
+    transition: color 0.3s ease;
+  }
+  footer a:hover {
+    color: #16a085;
+  }
+  

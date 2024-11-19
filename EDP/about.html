@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Landmarks Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #0044cc;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #0044cc;
+        }
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+        #info {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        .building-image {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our School</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+    </nav>
+    <div id="map"></div>
+    <div id="info">Click on a landmark to see details and images.</div>
+
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([40.73061, -73.935242], 17); // Adjust to your school's coordinates
+
+        // Add a tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+
+        // School landmarks
+        const landmarks = [
+            {
+                name: "Main Building",
+                coords: [40.73061, -73.935242], // Replace with actual coordinates
+                description: "This is the main building with classrooms, administration offices, and more.",
+                image: "main_building.jpg", // Path to your building image
+                rooms: {
+                    "Floor 1": ["Room 101: Physics Lab", "Room 102: Math Class"],
+                    "Floor 2": ["Room 201: Chemistry Lab", "Room 202: Computer Lab"],
+                    "Floor 3": ["Room 301: Library", "Room 302: Art Room"]
+                }
+            },
+            {
+                name: "Library",
+                coords: [40.73100, -73.934500], // Replace with actual coordinates
+                description: "A quiet place with books and study areas.",
+                image: "library_building.jpg", // Path to your library image
+            }
+        ];
+
+        // Add markers and interactivity
+        landmarks.forEach(landmark => {
+            const marker = L.marker(landmark.coords).addTo(map);
+            marker.bindPopup(`<strong>${landmark.name}</strong><br>${landmark.description}`);
+
+            marker.on('click', () => {
+                let infoHTML = `<h3>${landmark.name}</h3><p>${landmark.description}</p>`;
+                if (landmark.image) {
+                    infoHTML += `<img src="${landmark.image}" alt="${landmark.name}" class="building-image">`;
+                }
+                if (landmark.rooms) {
+                    infoHTML += "<h4>Floors and Rooms:</h4>";
+                    for (const [floor, rooms] of Object.entries(landmark.rooms)) {
+                        infoHTML += `<strong>${floor}:</strong><ul>`;
+                        rooms.forEach(room => {
+                            infoHTML += `<li>${room}</li>`;
+                        });
+                        infoHTML += "</ul>";
+                    }
+                }
+                document.getElementById('info').innerHTML = infoHTML;
+            });
+        });
+    </script>
+</body>
+</html>
